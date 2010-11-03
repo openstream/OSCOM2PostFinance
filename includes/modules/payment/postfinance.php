@@ -546,11 +546,9 @@
 						'BUTTONTXTCOLOR' => $payment_gateway_page_buttontxtcolor, 
 						'FONTTYPE' => $payment_gateway_page_fonttype, 
 						'LOGO' => $payment_gateway_page_logo,
-						'TP' => $payment_gateway_page_template,
-						'txtHistoryBack' => 'false',
-						tep_session_name() => tep_session_id()						
+						'TP' => $payment_gateway_page_template,					
 						);
-		
+						
 		//echo '<pre>'; print_r($params); die();
 		 
 		$params = array_change_key_case($params, CASE_UPPER);
@@ -558,9 +556,22 @@
 		
 		while(list($key, $val) = each($params)){
 		 if($val){
-		  $process_button_string .= tep_draw_hidden_field($key, $val);
+		  $process_button_string .= tep_draw_hidden_field($key, $val);	  
 		  $sha_str .= $key.'='.$val.$payment_gateway_sha_signature;
-		  $sha_str_debug .= $key.' = '.$val. ' ' . $payment_gateway_sha_signature."<br>";		  
+		  //$sha_str_debug .= $key.' = '.$val. ' ' . $payment_gateway_sha_signature."<br>";		    
+		 }
+		}
+
+		// params that must not be used for SHAsign calculation
+		$params_optional = array('txtHistoryBack' => 'false',
+								 tep_session_name() => tep_session_id()
+								 );
+	
+		$params = array_change_key_case($params_optional, CASE_UPPER);
+
+		while(list($key, $val) = each($params_optional)){
+		 if($val){
+		  $process_button_string .= tep_draw_hidden_field($key, $val);
 		 }
 		}
 		
