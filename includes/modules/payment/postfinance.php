@@ -617,7 +617,7 @@
         } elseif ( ($order_status == '9') ) {
           $comment_status = 'PostFinance IPN Verified [Payment has been accepted]';
         }elseif ( ($order_status == '51' || $order_status == '91' ) ) {
-          $comment_status = 'PostFinance IPN Verified [Payment has been pending]';
+          $comment_status = 'PostFinance IPN Verified [Payment is pending]';
         }
 
 		if ($order_status == "2") {
