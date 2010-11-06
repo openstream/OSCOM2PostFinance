@@ -1,7 +1,7 @@
 <?php
 /*
   $Id: postfinance.php   2009-01-19 16:30
-  Post finance swiss payment gateway - OSCommerce - Payment Module.
+  PostFinance E-Payment Modele for osCommerce 2.2
 */
 
   class postfinance {
@@ -24,7 +24,7 @@
 	case 1:
 		$this->postFinanceInfo = array(
 							"activeModuleMainTitle"		=> "Activate PostFinance module",
-							"activeModuleSubTitle"		=> "Do you wanna accept payments over Postcard?",
+							"activeModuleSubTitle"		=> "Would you like to accept payments via PostFinance?",
 							"SortMainTitle"				=> "Sort",
 							"SortSubTitle"				=> "Sort order of display. (Lowest is displayed first)",
 							"defCurrMainTitle"			=> "Default Transaction Currency",
@@ -84,7 +84,7 @@
 	case 2:
 		$this->postFinanceInfo = array(
 							"activeModuleMainTitle"		=> "Activate PostFinance module",
-							"activeModuleSubTitle"		=> "Do you wanna accept payments over Postcard?",
+							"activeModuleSubTitle"		=> "Would you like to accept payments via PostFinance?",
 							"SortMainTitle"				=> "Sort",
 							"SortSubTitle"				=> "Sort order of display. (Lowest is displayed first)",
 							"defCurrMainTitle"			=> "Default Transaction Currency",
@@ -145,7 +145,7 @@
 	  default:
 		$this->postFinanceInfo = array(
 							"activeModuleMainTitle"		=> "Activate PostFinance module",
-							"activeModuleSubTitle"		=> "Do you wanna accept payments over Postcard?",
+							"activeModuleSubTitle"		=> "Would you like to accept payments via PostFinance?",
 							"SortMainTitle"				=> "Sort",
 							"SortSubTitle"				=> "Sort order of display. (Lowest is displayed first)",
 							"defCurrMainTitle"			=> "Default Transaction Currency",
@@ -613,19 +613,19 @@
 	 }
 
 		if ($order_status == '5') {
-          $comment_status = 'Post Finance IPN Verified [Payment has been authorized]';
+          $comment_status = 'PostFinance IPN Verified [Payment has been authorized]';
         } elseif ( ($order_status == '9') ) {
-          $comment_status = 'Post Finance IPN Verified [Payment has been accepted]';
+          $comment_status = 'PostFinance IPN Verified [Payment has been accepted]';
         }elseif ( ($order_status == '51' || $order_status == '91' ) ) {
-          $comment_status = 'Post Finance IPN Verified [Payment has been pending]';
+          $comment_status = 'PostFinance IPN Verified [Payment has been pending]';
         }
 
 		if ($order_status == "2") {
-          $comment_status = 'Post Fianance IPN Invalid [Declined]';
+          $comment_status = 'PostFinance IPN Invalid [Declined]';
         } elseif ( $order_status == "52" || $order_status == "92" ) {
-          $comment_status = 'Post Fianance IPN Invalid [Exception occured]';
+          $comment_status = 'PostFinance IPN Invalid [Exception occured]';
         } elseif ( $order_status == "1" ) {
-          $comment_status = 'Post Fianance IPN Invalid [Cancelled]';
+          $comment_status = 'PostFinance IPN Invalid [Cancelled]';
         }
 
 	  $sql_data_array = array('orders_id' => $order_id,

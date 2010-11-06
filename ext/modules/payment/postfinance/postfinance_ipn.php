@@ -1,6 +1,7 @@
 <?php
 /*
   $Id: postfinance_ipn.php   2009-01-19 16:30
+  PostFinance E-Payment Modele for osCommerce 2.2
   This file used for to update order status and order details after completion payment process.
 */
 
@@ -40,14 +41,14 @@
         } elseif ( ($order_status == '9') ) {
           $comment_status = 'Payment has been accepted';
         }elseif ( ($order_status == '51' || $order_status == '91' ) ) {
-          $comment_status = 'Payment has been pending';
+          $comment_status = 'Payment is pending';
         }
 
         $sql_data_array = array('orders_id' => $_GET['orderID'],
                                 'orders_status_id' => (MODULE_PAYMENT_POSTFINANCE_ORDER_STATUS_ID > 0 ? (int)MODULE_PAYMENT_POSTFINANCE_ORDER_STATUS_ID : (int)DEFAULT_ORDERS_STATUS_ID),
                                 'date_added' => 'now()',
                                 'customer_notified' => '0',
-                                'comments' => 'Post Finance IPN Verified [' . $comment_status . ']');
+                                'comments' => 'PostFinance IPN Verified [' . $comment_status . ']');
 
         tep_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
       }
@@ -72,7 +73,7 @@
         $email_body .= $key . '=' . $value . "\n";
       }
 
-      tep_mail('', MODULE_PAYMENT_POSTFINANCE_DEBUG_EMAIL, 'Post Finance IPN Invalid Process', $email_body, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
+      tep_mail('', MODULE_PAYMENT_POSTFINANCE_DEBUG_EMAIL, 'PostFinance IPN Invalid Process', $email_body, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
     }
 
     if (isset($_GET['orderID']) && is_numeric($_GET['orderID']) && ($_GET['orderID'] > 0)) {
@@ -97,7 +98,7 @@
                                 'orders_status_id' => (MODULE_PAYMENT_POSTFINANCE_ORDER_STATUS_ID > 0) ? MODULE_PAYMENT_POSTFINANCE_ORDER_STATUS_ID : DEFAULT_ORDERS_STATUS_ID,
                                 'date_added' => 'now()',
                                 'customer_notified' => '0',
-                                'comments' => 'Post Fianance IPN Invalid [' . $comment_status . ']');
+                                'comments' => 'PostFinance IPN Invalid [' . $comment_status . ']');
 
         tep_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
       }
