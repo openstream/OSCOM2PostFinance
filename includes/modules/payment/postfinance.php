@@ -880,7 +880,7 @@
      
 		tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('".$this->postFinanceInfo[SortMainTitle]."', 'MODULE_PAYMENT_POSTFINANCE_SORT_ORDER', '0', '".$this->postFinanceInfo[SortSubTitle]."', '6', '0', now())");
 	    
-		tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('".$this->postFinanceInfo[defCurrMainTitle]."', 'MODULE_PAYMENT_POSTFINANCE_CURRENCY', 'CHF', '".$this->postFinanceInfo[defCurrSubTitle]."', '6', '0', now())");
+		tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('".$this->postFinanceInfo[defCurrMainTitle]."', 'MODULE_PAYMENT_POSTFINANCE_CURRENCY', '', '".$this->postFinanceInfo[defCurrSubTitle]."', '6', '0', now())");
 		
 	 	tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('".$this->postFinanceInfo[preparingMainTitle]."', 'MODULE_PAYMENT_POSTFINANCE_PREPARE_ORDER_STATUS_ID', '" . $status_id . "', '".$this->postFinanceInfo[preparingSubTitle]."', '6', '0', 'tep_cfg_pull_down_order_statuses(', 'tep_get_order_status_name', now())");
 
