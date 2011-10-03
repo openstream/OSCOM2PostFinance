@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>osCommerce PostFinance Add-On Documentation</title>
+<style type="text/css">
+body {
+	font-family: sans-serif;
+	font-size: 14px;
+}
+a img {
+	border: none;
+}
+</style>
+</head>
+
+<body>
+<h1>osCommerce PostFinance E-Payment Module</h1>
+<h2>About</h2>
+<p>This is the new PostFinance E-Payment Module for the new Swiss PostFinance payment gateway that has been released by PostFinance in November 2008.</p>
+<p>With the PostFinance account, your customers pay for their purchases directly with PostFinance Card or PostFinance E-Finance.</p>
+<p><strong>Features:</strong></p>
+<ul>
+  <li>Payment methods: PostFinance Card or PostFinance E-Finance</li>
+  <li>Direct debit of the PostFinance account</li>
+  <li>Secure, encrypted data transfer (min. 128 bit)</li>
+  <li>No fixed costs PostFinance Basic
+</li></ul>
+<p>Here you can find <a href="http://www.postfinance.ch/en/biz/prod/eserv/epay/providing/offer.html" target="_blank">more information about the different plans</a>.</p>
+<p>&nbsp;</p>
+<h2>Installation</h2>
+<p>a.)</p>
+<p>Extract then the ZIP archive and upload the contents of the catalog folder to your osCommerce store, i.e.</p>
+<ul>
+  <li>catalog/ext/modules/payment/postfinance/postfinance_ipn.php</li>
+  <li>catalog/includes/languages/english/modules/payment/postfinance.php</li>
+  <li>catalog/includes/languages/espanol/modules/payment/postfinance.php</li>
+  <li>catalog/includes/languages/german/modules/payment/postfinance.php</li>
+  <li>catalog/includes/modules/payment/postfinance.php</li>
+</ul>
+<p>b.)</p>
+<p>Login to your store admin and go to <em>Modules / Payment / PostFinance</em> and install the module by clicking on the install button on the right hand side.</p>
+<p>&nbsp;</p>
+<h2>Configuration</h2>
+<p>a.)</p>
+<p>Login to to the <a href="https://e-payment.postfinance.ch/ncol/test/admin_POSTFINANCE.asp" target="_blank">test environment of the PostFinance backend</a> and configure it according to the following screenshots - replace {yourstore.ch} with your store's domain name! Click to enlarge.</p>
+<h3>Global transaction parameters</h3>
+<p><a href="images/Screen Shot 2011-10-03 at 10.40.49 PM.png"><img src="images/Screen Shot 2011-10-03 at 10.40.49 PM.png" width="800" alt="Global transaction params"></a></p>
+<h3>Global security parameters</h3>
+<p><a href="images/Screen Shot 2011-10-03 at 10.41.09 PM.png"><img src="images/Screen Shot 2011-10-03 at 10.41.09 PM.png" width="800" alt="Global security parameters"></a></p>
+<h3>Payment Page layout</h3>
+<p><a href="images/Screen Shot 2011-10-03 at 10.41.35 PM.png"><img src="images/Screen Shot 2011-10-03 at 10.41.35 PM.png" width="800" alt="Payment Page layout"></a></p>
+<h3>Data and origin verification</h3>
+<p><a href="images/Screen Shot 2011-10-03 at 10.42.01 PM.png"><img src="images/Screen Shot 2011-10-03 at 10.42.01 PM.png" width="800" alt="Data and origin verification"></a></p>
+<h3>Transaction feedback</h3>
+<p><a href="images/Screen Shot 2011-10-03 at 10.43.24 PM.png"><img src="images/Screen Shot 2011-10-03 at 10.43.24 PM.png" width="800" alt="Transaction feedback"></a></p>
+<p>&nbsp;</p>
+<p>b.)</p>
+<p>Login into admin section of your osCommerce store and select Modules -&gt; Payment -&gt; PostFinance. Select edit and set the following values:</p>
+<p>Activate PostFinance module:	True</p>
+<p>Merchant ID (PSPID):	Your merchant ID, the test ID is e.g. openstreamDEMO</p>
+<p>User ID (optional):	Optional (additional users can be created in the PostFinance back office)</p>
+<p>Merchant/User Password:	Sent to you by PostFinance</p>
+<p>SHA-1 Signature:	Use any combination of characters you like and use the same string in the PostFinance </p>
+<p> back office (see CONFIGURATION 3.2. SHA-1 Signature)</p>
+<p>Default Transaction Currency:	CHF</p>
+<p>State of order:	The order state that is assigned after successful payment</p>
+<p>Sort:	Sort order of the payment module on the store's payment page</p>
+<p>Title and header of the page:	[YOUR TITLE FOR POST FINANCE PAYMENT PAGE], optional</p>
+<p>Background color:	[YOUR BACKGROUND COLOR], optional</p>
+<p>Text color:	[YOUR TEXT COLOR], optional</p>
+<p>Table background color:	[YOUR TABLE BACKGROUND COLOR], optional</p>
+<p>Table text color:	[YOUR TABLE TEXT COLOR], optional</p>
+<p>Button background color:	[YOUR BUTTON BACKGROUND COLOR], optional</p>
+<p>Button text color:	[YOUR BUTTON COLOR], optional</p>
+<p>Font family:	[YOUR'S FONT FAMILY], optional</p>
+<p>Logo URL:	URL/filename of the logo you want to display at the top of the payment page next to the title.</p>
+<p> The URL must be absolute (contain the full path), it cannot be relative. The logo needs to be stored on a secure server (see Chapter 7.3). If you do not have a secure environment to store your image, you can send a JPG or GIF file (and your PSPID) to merchanthelp@postfinance.ch (only for production accounts since this is a paying option! Please activate the <em>Logo Hosting</em> option in your Account &gt; Options page before sending us your logo). </p>
+<p> If the logo is stored on our servers, you only need to enter the filename, not the whole URL.</p>
+<p>Accept Url:	http://www.{yourstore.ch}/catalog/checkout_process.php</p>
+<p>Decline Url:	http://www.{yourstore.ch}/catalog/checkout_process.php </p>
+<p>Exception Url:	http://www.{yourstore.ch}/catalog/checkout_process.php</p>
+<p>Cancel Url:	http://www.{yourstore.ch}/catalog/checkout_process.php</p>
+<p>Catalog Url:	http://www.{yourstore.ch}/catalog/</p>
+<p>Home Url:	http://www.{yourstore.ch}</p>
+<p>Payment Zone: Select the desired payment zone or set to --none--</p>
+<p>Debug E-Mail Address		:	When a payment is declined, cancelled or throws an execption, the system will send a mail to this mail address.</p>
+<p>Mod				:	1 =&gt; TEST,  0 =&gt; LIVE / PRODUCTION</p>
+<p>After configuring the payment module in osCommerce admin and in the PostFinance backoffice, make a test order to see if everything is working correctly.</p>
+<p>c.)</p>
+<p>If you have tested successfully in the test environment, notify PostFinance merchant help that you want to go live. They will then copy your configuration to the live environment.</p>
+<p>Then go to the payment modules configuration in osCommerce and switch from TEST to LIVE under &quot;Mod&quot; (last config variable at the bottom) and do another test order with a real PostFinance Card or E-Finance account.</p>
+<p>&nbsp;</p>
+<h2>Support</h2>
+<ul>
+  <li><a href="http://forums.oscommerce.com/index.php?showtopic=325141" target="_blank">English osCommerce Support Thread</a></li>
+  <li><a href="http://forums.oscommerce.de/index.php?showtopic=67135" target="_blank">German osCommerce Support Thread</a></li>
+  <li><a href="mailto:info@openstream.ch">Premium Paid Support by Openstream</a></li>
+</ul>
+<p>&nbsp;</p>
+<h2>Credits</h2>
+<p>Openstream Internet Solutions<br>
+  Wieslergasse 6<br>
+8049 Zürich<br>
+Switzerland</p>
+<p><a href="http://www.openstream.ch" target="_blank">Web</a> | <a href="http://twitter.com/openstream" target="_blank">Twitter</a> | <a href="http://facebook.openstream.ch" target="_blank">Facebook</a></p>
+</body>
+</html>
