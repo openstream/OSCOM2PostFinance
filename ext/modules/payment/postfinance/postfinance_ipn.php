@@ -25,7 +25,7 @@
                                   'orders_status_id' => MODULE_PAYMENT_POSTFINANCE_PREPARE_ORDER_STATUS_ID,
                                   'date_added' => 'now()',
                                   'customer_notified' => '0',
-                                  'comments' => '');
+                                  'comments' => $_SESSION['comments']);
 
           tep_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
 
